@@ -140,3 +140,61 @@ const filterLongWords = (array, i) => {
 
 console.log("Exercise #8. ", filterLongWords(arr2, 3), "-> expected: ['word', 'Iskandar', 'Per Scholas']");
 console.log("Exercise #8. ", filterLongWords(arr2, 14), "-> expected: []");   //Setting i longer than any word in array.
+
+//   Bonus
+
+//   1. Add a method reverseString (from question 6) to the object String so that it is possible to call: "Per Scholas".reverseString().
+
+// First we need to understand what is a method and how it is added to the object and what is String object.
+// Upon research on w3schools I ended up in https://www.w3schools.com/jsref/jsref_prototype_string.asp where learned that:
+//   The prototype is a property available with all JavaScript objects.
+//   The prototype property allows you to add new properties and methods to strings.
+
+// Also I had to learn what is 'this', constructors, prototypes, that built in JavaScript datatypes (including string) are objects and that one should not change the prototype of built in JavaScript datatypes.
+// That said we will do it to solve this problem.
+
+String.prototype.reverseString = function() {
+  let reverse = "";
+  for (let i = this.length - 1; i >= 0; i--) {
+    reverse += this[i];
+  }
+  return reverse;
+};
+
+console.log("Bonus Exercise #1. ", "Per Scholas".reverseString(), "-> expected 'salohcS reP'");
+
+//   2. // Write a function that takes a string as argument and returns an object where:
+// the keys are the characters that occur in the string
+// the values are the number of occurrences for each letter, regardless of the case
+// For example, calling the function with the string "Per Scholas" will return:
+
+// {
+//   a: 1,
+//   c: 1,
+//   e: 1,
+//   h: 1,
+//   l: 1,
+//   o: 1,
+//   p: 1,
+//   r: 1,
+//   s: 2,
+// }
+
+
+
+// This one was really tricky. Accessing properties by using bracket notation was the key otherwise it throws error with dot notation.
+
+const charOccurr = string => {
+  let object = {};   //Declaring a variable and assigning empty object.
+  for (let i = 0; i < string.length; i++) {   //Looping through string.
+    if (typeof object[string[i]] == "undefined") {   //We're trying to access object property with character in string. If it doesn't exist it returns 'undefined' and passes condition.
+      object[string[i].toLowerCase()] = 1;   //Adding property and setting it to 1 (initiating). Also making sure that input is always lowercase.
+    } else {
+      object[string[i].toLowerCase()]++;   //If it exists and doesn't pass condition, reiterate.
+    }
+  }
+  return object;
+}
+
+console.log("Bonus Exercise #2. ", charOccurr("Per Scholas"), "-> expected p: 1, e: 1, r: 1, ' ': 1, s: 2, c: 1, h: 1, o: 1, l: 1, a: 1");
+console.log("Bonus Exercise #2. ", charOccurr("Alpaca"), "-> expected a: 3, l: 1, p: 1, c: 1");
