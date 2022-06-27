@@ -5,7 +5,22 @@ class Spaceship {
     this.firepower = firepower;
     this.accuracy = accuracy;
   }
-  attack() {
-    
+  attack(enemy) {
+    Math.random() > this.accuracy ? enemy.hull -= this.firepower : false;
+  }
+}
+
+const round = (player, alien) => {
+  while(player.hull > 0 || alien.hull > 0) {
+    if (player.attack(alien)) {
+      console.log('attaboy!');
+      if (alien.hull > 0) {
+        if (alien.attack(player)) {
+          console.log('You have been hit!');
+        }
+      }
+    } else if (alien.attack(player)) {
+      console.log('You have been hit!');
+    }
   }
 }
