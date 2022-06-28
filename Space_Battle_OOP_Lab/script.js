@@ -24,3 +24,36 @@ const round = (player, alien) => {
     }
   }
 }
+
+const player = new Spaceship('human', 20, 5, 0.7);
+
+const alienHull = [3, 4, 5, 6];
+const alienFirepower = [2, 3, 4];
+const alienAccuracy = [0.6, 0.7, 0.8];
+
+const random = array => Math.floor(Math.random() * array.length);
+
+const randomAlien = () => {
+  let alien = new Spaceship('alien', random(alienHull), random(alienFirepower), random(alienAccuracy));
+  return alien;
+}
+
+const game = rounds => {
+  let shipsDestroyed = 0;
+  const alien = randomAlien();
+  while (shipsDestroyed < rounds) {
+    round(player, alien);
+    if (player.hull > 0) {
+      shipsDestroyed++
+      // prompt attack? if yes - continue, else the game is over
+    } else {
+      console.log('You lost');
+    }
+  }
+  if (shipsDestroyed === 6) {
+    console.log('You won!');
+  } else {
+    console.log('You lost!');
+  }
+
+}
