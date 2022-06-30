@@ -1,3 +1,5 @@
+alert('Open console in DevTools to play the game. Press F12 or right-click -> "Inspect"')
+
 const playerHull = document.querySelector('#playerHull');
 const enemyHull = document.querySelector('#enemyHull');
 const enemyFirepower = document.querySelector('#enemyFirepower');
@@ -16,10 +18,10 @@ class Spaceship {
     if (Math.random() < this.accuracy) {
       enemy.hull -= this.firepower;
       await timeout(1500) //timeout to slow down the console and achieve smoother gameplay
-      console.log(`+${this.firepower} Damage`);
+      console.log(`%c +${this.firepower} Damage`, 'color: red;');
     } else {
       await timeout(1500)
-      console.log('Miss');
+      console.log('%c Miss', 'font-style: italic;');
     }
   }
 }
@@ -29,12 +31,12 @@ const round = async (player, alien) => {
   while(player.hull > 0 && alien.hull > 0) {
     updateDOM(player, alien); //updating DOM to reflect stats of the player and alien spaceships
     await timeout(1500)
-    console.log(`Attack!`);
+    console.log('%c Attack!', 'font-size: 15px; color: black; background: azure; border: 1px solid grey;');
     await player.attack(alien);
     updateDOM(player, alien);
     if (alien.hull > 0) {
       await timeout(1500)
-      console.log('Alien attack!');
+      console.log('%c Alien attack!', 'font-size: 15px; color: black; background:  #009797;; border: 1px solid grey;');
       alien.attack(player);
       await timeout(1500);
       updateDOM(player, alien);
@@ -70,25 +72,27 @@ const updateDOM = (player, enemy) => {
 
 // async game function with rounds parameter
 const game = async (rounds) => {
+
+  await timeout(1500);
   let i = 1; //rounds counter
   for (i; i <= rounds; i++) {
     await timeout(1500)
-    console.log(`Round ${i}`); //declaring round
+    console.log(`%c - Round ${i} -`, 'font-size: 25px; color: orange;'); //declaring round
     await round(player, randomAlien()); //awaiting for round results
     if (player.hull > 0) { //check if human spaceship has not been destroyed
-      console.log('Alien Spaceship destroyed!');
+      console.log('%c Alien Spaceship has been destroyed!', 'font-size: 20px;');
       if (i === rounds) { //check if rounds played is equal to rounds argument
-        console.log('You won!');
+        console.log('%c ★ VICTORY ★', 'font-size: 40px; color: gold;');
         break; //breaking the loop
       }
     } else { //if human spaceship has been destroyed
-      console.log('You lost!');
+      console.log('%c DEFEAT', 'font-size: 40px; color: red;');
       break;
     }
     await timeout(1500);
     let attack = prompt('Attack [1] or Retreat [2]?', 1) //prompt to continue. Located at the end of function to run first round by default
     if (attack != 1) { //checking input
-      console.log('GAME OVER!');
+      console.log('%c GAME OVER!', 'font-size: 40px; color: red;');
       break;
     }
   }
