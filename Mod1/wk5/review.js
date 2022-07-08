@@ -512,7 +512,7 @@
 //   console.log(`This is my ${string}`);
 // }
 
-// return printString('answer');
+// printString('answer');
 
 // // Create a function called add that takes in three number parameters. Create 3 variables and assign numerical values to them. Invoke your add() and pass in those three variables as arguments.
 
