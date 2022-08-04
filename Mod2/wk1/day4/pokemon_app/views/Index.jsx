@@ -3,7 +3,7 @@ const React = require('react');
 const myStyle = {
   color: '#ffffff',
   backgroundColor: '#000000',
-  // textTransform: 'capitalize', ////Easier method to capitalize the first letter
+  textTransform: 'capitalize', ////Easier method to capitalize the first letter
 }
 
 class Index extends React.Component {

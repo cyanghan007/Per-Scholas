@@ -3,7 +3,7 @@ const React = require('react');
 const myStyle = {
   color: '#ffffff',
   backgroundColor: '#000000',
-  // textTransform: 'capitalize', ////Easier method to capitalize the first letter
+  textTransform: 'capitalize', ////Easier method to capitalize the first letter
 }
 
 class New extends React.Component {
@@ -16,7 +16,7 @@ class New extends React.Component {
               <h1>New Pokemon page</h1>
               <form action="/pokemon" method="POST">
                 Name: <input type="text" name="name" /><br/>
-                Image url: <input type="text" name="image" /><br/>
+                Image url: <input type="text" name="img" /><br/>
                 <input type="submit" name="" value="Create Pokemon"/>
               </form>
             </div>
