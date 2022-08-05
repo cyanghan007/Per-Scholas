@@ -6,25 +6,48 @@ const myStyle = {
   textTransform: 'capitalize', ////Easier method to capitalize the first letter
 }
 
+const aStyle = {
+  backgroundColor: '#f44336',
+  color: 'white',
+  padding: '14px 25px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  border: '1px solid black',
+  display: 'inline'
+}
+
+const name = {
+  backgroundColor: 'grey',
+  color: 'white',
+  padding: '14px 25px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  border: '1px solid black',
+  display: 'inline-block'
+}
+
 class Index extends React.Component {
   render() {
-    const {pokemon} = this.props;
+    const { pokemon } = this.props;
     return (
-            <div style={myStyle}>
-              <nav>
-                <a href="/pokemon/new">Create a New Pokemon</a>
-              </nav>
-              <h1>See All The Pokemon!</h1>
-              <ul>
-                {pokemon.map((poke) => {
-                  return (
-                    <li>
-                      <a href={`/pokemon/${poke.id}`}>{poke.name}</a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+      <div style={myStyle}>
+        <nav>
+          <a href="/pokemon/new" style={aStyle}>Create a New Pokemon</a>
+        </nav>
+        <h1>See All The Pokemon!</h1>
+        <ul>
+          {pokemon.map((poke) => {
+            return (
+              <li key={poke.id}>
+                <a href={`/pokemon/${poke.id}`} style={name}>{poke.name}</a>
+                <form action={`/pokemon/${poke.id}?_method=DELETE`} method="POST" style={{ display: 'inline' }}>
+                  <button type="submit" style={aStyle}>Delete</button>
+                </form>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     )
   }
 }
