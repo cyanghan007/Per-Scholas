@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3003;
 const Pokemon = require('./models/pokemon.js');
@@ -17,6 +18,7 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Pokemon App!');
