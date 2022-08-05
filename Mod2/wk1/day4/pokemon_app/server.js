@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3003;
 const Pokemon = require('./models/pokemon.js');
+const pokemonData = require('./utilities/pokemonData');
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -15,7 +16,7 @@ mongoose.connection.once('open', () => {
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Pokemon App!');
@@ -28,6 +29,13 @@ app.get('/pokemon', (req, res) => {
     });
   });
 });
+
+app.get('/pokemon/seed', async (req, res) => {
+  await Pokemon.deleteMany({});
+  await Pokemon.create(pokemonData);
+  // await Pokemon.deleteMany({name: /saur/});
+  res.redirect('/pokemon');
+})
 
 app.get('/pokemon/new', (req, res) => {
   res.render('New');
@@ -44,6 +52,36 @@ app.get('/pokemon/:id', (req, res) => {
     res.render('Show', {
       pokemon: foundPokemon
     });
+  });
+});
+
+app.get('/pokemon/:id/edit', (req, res) => {
+  Pokemon.findById(req.params.id, (err, foundPokemon) => {
+    if (!err) {
+      res.render('Edit', {
+        pokemon: foundPokemon
+      });
+    } else {
+      res.send({ msg: err.message })
+    }
+  });
+});
+
+app.post('/pokemon', (req, res) => {
+  Pokemon.create(req.body, (err) => {
+    res.redirect('/pokemon');
+  });
+});
+
+app.delete('/pokemon/:id/', (req, res) => {
+  Pokemon.findByIdAndRemove(req.params.id, (err) => {
+    res.redirect('/pokemon');
+  });
+});
+
+app.put('/pokemon/:id/', (req, res) => {
+  Pokemon.findByIdAndUpdate(req.params.id, req.body, (err, updatedPokemon) => {
+    res.redirect(`/pokemon/${updatedPokemon.id}`);
   });
 });
 
