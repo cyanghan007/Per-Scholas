@@ -1,4 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* css reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	/* border: 0; */
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
 * {
 	border: 1px solid red;
 }
@@ -9,19 +99,38 @@ body {
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	font-size: 1.5em;
+  color: grey;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 h2 {
 	font-size: 2em;
+	color: white;
+}
+
+.container {
+	padding: 20px;
 }
 
 .wrapper {
 	display: grid;
-	background-color: #f7f6f6;
+	background-color: #505165;
 	position: relative;
 	margin: auto;
 	width: 80vw;
-	padding: 80px 20px;
+	padding-top: 80px;
 	grid-gap: 20px;
 	grid-template-areas:
 		'sidenav reviews average-rating sentiment'
@@ -33,46 +142,39 @@ h2 {
 
 .sidenav {
 	grid-area: sidenav;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 .reviews {
-	background-color: #dddddd;
+	background-color: #333d49;
 	grid-area: reviews;
-	display: flexbox;
-	padding: 20px;
 }
 
 .average-rating {
-	background-color: #dddddd;
+	background-color: #333d49;
 	grid-area: average-rating;
-	display: flexbox;
-
-	padding: 20px;
 }
 
 .sentiment {
-	background-color: #dddddd;
+	background-color: #333d49;
 	grid-area: sentiment;
-	display: flexbox;
-	padding: 20px;
 }
 
 .sentiment h2 {
 	text-align: center;
+	font-size: 1em;
 }
 
 .visitors {
-	background-color: #dddddd;
+	background-color: #333d49;
 	grid-area: visitors;
-	display: flexbox;
-  justify-content: space-between;
-	padding: 20px;
 }
 
 .graph {
-	background-color: #bebdbd;
-	height: 100px;
+	background-color: #333d49;
+	margin: 20px;
+	height: 60%;
+}
+
+.active {
+	color: white;
 }
