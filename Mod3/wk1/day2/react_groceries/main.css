@@ -1,35 +1,144 @@
+/* css reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+.list {
+	display: inline-block;
+}
+
+ul {
+  display: inline-block;
+}
+
 .listItem {
 	border: 2px solid grey;
 	display: inline-block;
 	width: 300px;
-  height: 600px;
+	height: 550px;
 	margin: 10px;
-  border-radius: 6px;
+	border-radius: 6px;
+}
+
+.form {
+  background-color:darkgrey;
+	border: 2px solid grey;
+	display: inline-block;
+	width: 300px;
+	height: 550px;
+	margin: 10px;
+	border-radius: 6px;
+	padding: 20px;
 }
 
 .later {
 	color: grey;
-  background-color: rgb(67, 65, 65);
+	background-color: rgb(67, 65, 65);
 	text-decoration: line-through;
-  filter:grayscale(1)
+	filter: grayscale(1);
 }
 
-.cardImage img{
-  height: 300px;
+.cardImage img {
+	height: 300px;
+	width: 300px;
 }
 
 .cardMain {
-  height: 200px;
-  padding: 0 20px
+	height: 150px;
+	padding: 0 20px;
 }
 
 .cardButtons {
-  height: 100px;
-  text-align: center;
+	height: 50px;
+	text-align: center;
 }
 
-.cardButtons button {
-  margin: 20px;
-  height: 40px;
-  width: 100px;
+button {
+	margin: 0 20px;
+	height: 40px;
+	width: 100px;
 }
