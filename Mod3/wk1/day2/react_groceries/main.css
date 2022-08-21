@@ -1,0 +1,35 @@
+.listItem {
+	border: 2px solid grey;
+	display: inline-block;
+	width: 300px;
+  height: 600px;
+	margin: 10px;
+  border-radius: 6px;
+}
+
+.later {
+	color: grey;
+  background-color: rgb(67, 65, 65);
+	text-decoration: line-through;
+  filter:grayscale(1)
+}
+
+.cardImage img{
+  height: 300px;
+}
+
+.cardMain {
+  height: 200px;
+  padding: 0 20px
+}
+
+.cardButtons {
+  height: 100px;
+  text-align: center;
+}
+
+.cardButtons button {
+  margin: 20px;
+  height: 40px;
+  width: 100px;
+}
