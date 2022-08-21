@@ -12,23 +12,100 @@ class App extends React.Component {
 		);
 	}
 }
-
 class List extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
-	state = { list: this.props.list };
+	state = {
+		list: this.props.list.list,
+		item: '',
+		brand: '',
+		units: '',
+		quantity: 0,
+		image: '',
+		isPurchased: false,
+	};
+
+	handleChange = (event) => {
+		this.setState({ [event.target.id]: event.target.value });
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+		const newItem = {
+			item: this.state.item,
+			brand: this.state.brand,
+			units: this.state.units,
+			quantity: this.state.quantity,
+			image: this.state.image,
+			isPurchased: false,
+		};
+		this.setState({
+			list: [...this.state.list, newItem],
+			item: '',
+			brand: '',
+			units: '',
+			quantity: 0,
+			image: '',
+		});
+	};
 
 	render() {
 		return (
 			<div style={{ backgroundColor: this.props.list.color }}>
 				<h2>{this.props.list.name}</h2>
-				<ul className="list">
-					{this.props.list.list.map((product) => (
-						<Item product={product} />
-					))}
-				</ul>
+				<div className="list">
+					<ul>
+						{this.state.list.map((product) => (
+							<Item product={product} />
+						))}
+            <form className="form" onSubmit={this.handleSubmit}>
+						<label htmlFor="item">Item</label>
+						<br />
+						<input
+							type="text"
+							value={this.state.item}
+							onChange={this.handleChange}
+							id="item"></input>
+						<br />
+						<label htmlFor="brand">Brand</label>
+						<br />
+						<input
+							type="text"
+							value={this.state.brand}
+							onChange={this.handleChange}
+							id="brand"></input>
+						<br />
+						<label htmlFor="units">Units</label>
+						<br />
+						<input
+							type="text"
+							value={this.state.units}
+							onChange={this.handleChange}
+							id="units"></input>
+						<br />
+						<label>Quantity</label>
+						<br />
+						<input
+							type="number"
+							value={this.state.quantity}
+							onChange={this.handleChange}
+							id="quantity"></input>
+						<br />
+						<label>Image</label>
+						<br />
+						<input
+							type="text"
+							value={this.state.image}
+							onChange={this.handleChange}
+							id="image"></input>
+						<br />
+						<button type="submit">Add Item</button>
+					</form>
+					</ul>
+
+				</div>
 			</div>
 		);
 	}
