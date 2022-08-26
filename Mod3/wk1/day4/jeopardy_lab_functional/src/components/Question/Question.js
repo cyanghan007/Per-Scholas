@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionInfo from './QuestionInfo';
+import QuestionInfo from '../QuestionInfo/QuestionInfo';
 
 function Question({ questions }) {
 	return (

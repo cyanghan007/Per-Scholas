@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Question from './components/Question';
-import Score from './components/Score';
+import Question from '../Question/Question';
+import Score from '../Score/Score';
 
 function App() {
 	const [questions, setQuestions] = useState(null);
@@ -9,11 +9,23 @@ function App() {
 	const url10 = 'http://jservice.io/api/random?count=10';
 	const points = questions ? questions[0].value : 0;
 
-	const getQuestion = (url) => {
-		fetch(url)
-			.then((response) => response.json())
-			.then((data) => setQuestions(data))
-			.catch((error) => console.error(error));
+	// with promise chain
+	// const getQuestion = (url) => {
+	// 	fetch(url)
+	// 		.then((response) => response.json())
+	// 		.then((data) => setQuestions(data))
+	// 		.catch((error) => console.error(error));
+	// };
+
+	// with async/await
+	const getQuestion = async (url) => {
+		try {
+			const response = await fetch(url);
+			const data = await response.json();
+			setQuestions(data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
