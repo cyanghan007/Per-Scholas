@@ -1,0 +1,15 @@
+.Score button {
+	color: black;
+}
+
+#decrease {
+	background-color: #fe938c;
+}
+
+#increase {
+	background-color: #6191b5;
+}
+
+#reset {
+	background-color: #e71d37;
+}

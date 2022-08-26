@@ -1,0 +1,9 @@
+.Answer button {
+	color: #f7f7ff !important;
+	background-color: #1a2650 !important;
+	width: 500px;
+	padding: 20px;
+	border: none;
+	border-radius: 0;
+  font-size: 0.8em;
+}
