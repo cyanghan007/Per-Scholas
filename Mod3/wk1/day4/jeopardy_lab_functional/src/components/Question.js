@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import QuestionInfo from './QuestionInfo';
 
-function Question({ answer }) {
-	const [showQuestion, toggleQuestion] = useState(false);
-
-	return showQuestion ? (
-		<div>
-			<button onClick={() => toggleQuestion(!showQuestion)}>
-				Click to Hide Question
-			</button>
-			<h4>Question: {answer}</h4>
-		</div>
-	) : (
-		<div>
-			<button onClick={() => toggleQuestion(!showQuestion)}>
-				Click to Reveal Question
-			</button>
+function Question({ questions }) {
+	return (
+		<div className="Question">
+			{questions &&
+				questions.map((question) => (
+					<QuestionInfo key={question.id} question={question} />
+				))}
 		</div>
 	);
 }

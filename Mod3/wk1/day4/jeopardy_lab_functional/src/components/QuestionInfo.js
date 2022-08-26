@@ -1,8 +1,7 @@
 import React from 'react';
-import Question from './Question';
+import Answer from './Answer';
 
 function QuestionInfo({ question }) {
-	console.log(question);
 	return (
 		<div>
 			<h3>
@@ -14,7 +13,7 @@ function QuestionInfo({ question }) {
 			<h4>
 				Answer: <span>{question.question}</span>
 			</h4>
-			<Question answer={question.answer} />
+			<Answer answer={question.answer} />
 		</div>
 	);
 }
