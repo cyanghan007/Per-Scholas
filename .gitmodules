@@ -4,4 +4,7 @@
 [submodule "JavaScript30"]
 	path = JavaScript30
 	url = https://github.com/Iskandar-S/JavaScript30
+[submodule "Rock_Paper_Scissors"]
+	path = rock_paper_scissors
+	url = https://github.com/Iskandar-S/Rock_Paper_Scissors
 	
